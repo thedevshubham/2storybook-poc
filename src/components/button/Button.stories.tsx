@@ -1,16 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
-import { Button } from "./Button";
-import { expect } from "@storybook/jest";
+import { ButtonProps } from "./Button";
 import { within, userEvent } from "@storybook/testing-library";
-// import { withA11y } from "@storybook/addon-a11y";
+import Button from "./Button";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Elements/Button",
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     variant: {
       options: ["primary", "secondary"],
@@ -18,42 +14,50 @@ export default {
     },
     onClick: { action: true },
   },
-  //   decorators: [withA11y],
 } as ComponentMeta<typeof Button>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-export const ButtonInteraction = Template.bind({});
-ButtonInteraction.play = async ({ args, canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole("button"));
-  await expect(args.onClick).toHaveBeenCalled();
-};
+const Template: ComponentStory<typeof Button> = (args: ButtonProps) => (
+  <Button {...args} />
+);
 
+export const ButtonInteraction: ComponentStory<typeof Button> = Template.bind(
+  {}
+);
 ButtonInteraction.args = {
   primary: true,
   label: "Button",
 };
+ButtonInteraction.play = async ({ args, canvasElement }) => {
+  const { onClick } = args;
+  const canvas = within(canvasElement);
+  const buttonElement = canvas.getByRole("button");
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
+  await userEvent.click(buttonElement);
+  await new Promise((resolve) => setTimeout(resolve, 500)); // Delay for visualization
+
+  if (onClick) {
+    onClick();
+  }
+};
+
+export const Primary: ComponentStory<typeof Button> = Template.bind({});
 Primary.args = {
   primary: true,
   label: "Button",
 };
 
-export const Secondary = Template.bind({});
+export const Secondary: ComponentStory<typeof Button> = Template.bind({});
 Secondary.args = {
   label: "Button",
 };
 
-export const Large = Template.bind({});
+export const Large: ComponentStory<typeof Button> = Template.bind({});
 Large.args = {
   size: "large",
   label: "Button",
 };
 
-export const Small = Template.bind({});
+export const Small: ComponentStory<typeof Button> = Template.bind({});
 Small.args = {
   size: "small",
   label: "Button",

@@ -1,11 +1,9 @@
 {
-  "name": "2storybook-poc",
-  "version": "0.1.0",
+  "name": "storybook-poc-sb3",
+  "version": "0.1.9",
   "private": false,
-  "files": [
-    "dist"
-  ],
   "main": "dist/index.js",
+  "type": "module",
   "dependencies": {
     "@storybook/addon-a11y": "^7.0.26",
     "@storybook/jest": "^0.1.0",
@@ -21,16 +19,25 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "rollup": "^3.26.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel ./src -d build --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "buildLib": "rollup -c"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +59,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.6",
+    "@babel/plugin-transform-react-jsx": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
     "@storybook/addon-actions": "^7.0.26",
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-interactions": "^7.0.26",
