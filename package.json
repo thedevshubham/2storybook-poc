@@ -1,7 +1,11 @@
 {
   "name": "2storybook-poc",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
   "dependencies": {
     "@storybook/addon-a11y": "^7.0.26",
     "@storybook/jest": "^0.1.0",
