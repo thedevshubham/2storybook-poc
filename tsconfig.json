@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -15,8 +18,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "declaration": true,
-    "outDir": "dist"
+    "sourceMap": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/reportWebVitals.ts",
+    "src/setupTests.ts"
+  ]
 }

@@ -1,11 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ButtonProps } from "./Button";
+import Button, { ButtonProps } from "./Button";
 import { within, userEvent } from "@storybook/testing-library";
-import Button from "./Button";
 
 export default {
-  title: "Elements/Button",
+  title: "Button",
   component: Button,
   argTypes: {
     variant: {

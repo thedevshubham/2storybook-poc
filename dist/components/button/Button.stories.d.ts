@@ -1,6 +1,5 @@
 import { ComponentStory } from "@storybook/react";
-import { ButtonProps } from "./Button";
-import Button from "./Button";
+import Button, { ButtonProps } from "./Button";
 declare const _default: import("@storybook/types").ComponentAnnotations<import("@storybook/react/dist/types-0a347bb9").R, ButtonProps>;
 export default _default;
 export declare const ButtonInteraction: ComponentStory<typeof Button>;
